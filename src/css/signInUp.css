@@ -1,0 +1,32 @@
+.SignInUp {
+  background-color: aquamarine;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  row-gap: 10px;
+}
+
+.signIn {
+  float: left;
+  margin-left: 5px;
+}
+
+.signUp {
+  float: right;
+  margin-right: 5px;
+}
+
+.signIn:hover,
+.signUp:hover {
+  text-decoration: underline;
+  font-weight: bolder;
+  cursor: pointer;
+}

@@ -1,0 +1,9 @@
+.AddFiles {
+  background-color: rgb(135, 195, 222);
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 120px auto;
+  grid-auto-rows: min-content;
+  align-items: center;
+  justify-content: center;
+}

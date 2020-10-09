@@ -1,0 +1,17 @@
+.SubmitInvoice {
+  height: 100vh;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.dataToSubmit {
+  display: grid;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: center;
+  row-gap: 15px;
+}

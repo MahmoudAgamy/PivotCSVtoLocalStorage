@@ -1,0 +1,40 @@
+.Match {
+  background-color: rgb(19, 90, 243);
+  height: 100vh;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 0.8fr;
+  grid-template-rows: 10px 1fr;
+  align-items: center;
+  justify-content: center;
+}
+
+.matchingBox {
+  background-color: aqua;
+  height: 70vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+}
+
+.SupplierBox,
+.PivotBox,
+.MatchedPatternBox {
+  border-right: 1px solid blue;
+  display: grid;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.SupplierBox {
+  display: grid;
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.SupplierBoxColumn:hover,
+.PivotBoxColumn:hover {
+  background-color: azure;
+}
