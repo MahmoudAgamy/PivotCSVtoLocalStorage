@@ -107,18 +107,7 @@ function Invoices(props) {
       );
     }
   };
-  return (
-    <div className="Invoices">
-      {console.log("inv: ", csvInvoiceData)}
-      {console.log("items: ", csvLineItemsData)}
-      {console.log("matchingPattern: ", matchingPattern)}
-      {renderComponent()}
-      {/* <AddFiles
-        handleInputInvoice={handleInputInvoice}
-        handleInputLineItems={handleInputLineItems}
-      /> */}
-    </div>
-  );
+  return <div className="Invoices">{renderComponent()}</div>;
 }
 
 export default Invoices;
