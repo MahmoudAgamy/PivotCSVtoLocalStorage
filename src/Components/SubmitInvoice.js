@@ -42,7 +42,12 @@ function SubmitInvoice(props) {
     );
   };
 
-  const handleRebuildMatchingPattern = () => {};
+  const handleRebuildMatchingPattern = async () => {
+    var loggedInUser = await localStorage.getItem("loggedInUser");
+    localStorage.setItem(`${loggedInUser}_matchingPattern`, null);
+    props.setMatchingPattern(null);
+    return <Redirect to="/" />;
+  };
 
   return (
     <div className="SubmitInvoice">

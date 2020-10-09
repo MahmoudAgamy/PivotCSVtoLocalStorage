@@ -93,6 +93,7 @@ function Invoices(props) {
         return (
           <Submit
             matchingPattern={matchingPattern}
+            setMatchingPattern={setMatchingPattern}
             handleCancel={handleCancel}
             csvLineItemsData={csvLineItemsData}
           />
