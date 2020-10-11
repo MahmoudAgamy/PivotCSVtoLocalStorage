@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
     <Router>
-      <div className="app">
+      <div style={{ backgroundColor: "#dbdbdb", height: "100vh" }}>
         <Route path="/" component={ButtonAppBar} />
         <Switch>
           <Route exact path="/" component={SignInSignUp} />

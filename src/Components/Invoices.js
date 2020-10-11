@@ -110,7 +110,8 @@ function Invoices(props) {
       );
     }
   };
-  return <div className="Invoices">{renderComponent()}</div>;
+
+  return <div>{renderComponent()}</div>;
 }
 
 export default Invoices;
