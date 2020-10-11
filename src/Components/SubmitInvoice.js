@@ -4,11 +4,6 @@ import "../css/submit.css";
 
 function SubmitInvoice(props) {
   const [lineItems, setLineItems] = useState([]);
-  // turn matchingPattern into key: index
-  // loop over matchingPattern keys and set it
-  useEffect(() => {
-    setLineItems(buildPivotInvoice);
-  }, [props]);
 
   //helper
   const buildPivotInvoice = () => {
@@ -33,6 +28,11 @@ function SubmitInvoice(props) {
     });
     return pivotLineItems;
   };
+
+  useEffect(() => {
+    setLineItems(buildPivotInvoice);
+  }, [props]);
+
   // Handlers
   const handleSubmit = async () => {
     var loggedInUser = await localStorage.getItem("loggedInUser");

@@ -1,6 +1,6 @@
 import React from "react";
-import TopBar from "./Components/TopBar";
-import SignInUp from "./Components/SignInUp";
+import ButtonAppBar from "./Components/ButtonAppBar";
+import SignInSignUp from "./Components/SignInSignUp";
 import Invoices from "./Components/Invoices";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -8,10 +8,9 @@ function App() {
   return (
     <Router>
       <div className="app">
-        {/* <TopBar /> */}
-        <Route path="/" component={TopBar} />
+        <Route path="/" component={ButtonAppBar} />
         <Switch>
-          <Route exact path="/" component={SignInUp} />
+          <Route exact path="/" component={SignInSignUp} />
           <Route exact path="/Invoices" component={Invoices} />
           <Route path="*" component={() => "404"} />
         </Switch>

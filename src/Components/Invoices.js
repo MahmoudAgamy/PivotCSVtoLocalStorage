@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AddFiles from "./AddFiles";
+import AddCSVFiles from "./AddCSVFiles";
 import Match from "./Match";
 import Submit from "./SubmitInvoice";
 
@@ -37,6 +37,7 @@ function Invoices(props) {
         );
         return;
       }
+      console.log("Lines: ", lines);
       setCSVInvoiceData(lines);
     };
     reader.readAsText(e.target.files[0]);
@@ -58,6 +59,7 @@ function Invoices(props) {
           return;
         }
       });
+      console.log("lineItems: ", lineItems);
       setCSVLineItemsData(lineItems);
     };
     reader.readAsText(e.target.files[0]);
@@ -101,7 +103,7 @@ function Invoices(props) {
       }
     } else {
       return (
-        <AddFiles
+        <AddCSVFiles
           handleInputInvoice={handleInputInvoice}
           handleInputLineItems={handleInputLineItems}
         />

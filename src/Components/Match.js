@@ -77,7 +77,7 @@ function Match(props) {
             return column.show ? (
               <div
                 className="SupplierBoxColumn"
-                id={i}
+                key={i}
                 onClick={(e) => supColumnClickHandler(column.column_name)}
               >
                 {column.column_name}
@@ -90,7 +90,7 @@ function Match(props) {
             return column.show ? (
               <div
                 className="PivotBoxColumn"
-                id={i}
+                key={i}
                 onClick={(e) => pivotColumnClickHandler(column.column_name)}
               >
                 {column.column_name}
@@ -103,7 +103,7 @@ function Match(props) {
             return (
               <div
                 className="PivotBoxColumn"
-                id={i}
+                key={i}
                 onClick={(e) =>
                   deleteFromPattern(`${key} <=> ${buildPattern[key]}`)
                 }
