@@ -16,10 +16,6 @@ function Invoices(props) {
       const supplierMatchingPattern = localStorage.getItem(
         `${loggedInUser}_matchingPattern`
       );
-      console.log(
-        "supplierMatchingPattern: ",
-        JSON.parse(supplierMatchingPattern)
-      );
       setMatchingPattern(JSON.parse(supplierMatchingPattern));
     }
   }, [props]);
@@ -37,7 +33,6 @@ function Invoices(props) {
         );
         return;
       }
-      console.log("Lines: ", lines);
       setCSVInvoiceData(lines);
     };
     reader.readAsText(e.target.files[0]);
@@ -59,7 +54,6 @@ function Invoices(props) {
           return;
         }
       });
-      console.log("lineItems: ", lineItems);
       setCSVLineItemsData(lineItems);
     };
     reader.readAsText(e.target.files[0]);

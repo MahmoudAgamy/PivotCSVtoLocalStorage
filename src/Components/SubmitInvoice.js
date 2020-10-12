@@ -4,8 +4,9 @@ import "../css/submit.css";
 
 function SubmitInvoice(props) {
   const [lineItems, setLineItems] = useState([]);
+  const [totals, setTotals] = useState({});
 
-  //helper
+  // helper buildPivotInvoice START
   const buildPivotInvoice = () => {
     const mappedIndexes = {};
     const invoiceColumnNames = [
@@ -15,11 +16,16 @@ function SubmitInvoice(props) {
       "price",
       "rebate",
     ];
+
+    // building the mappedIndexes depending on the names saved in the matchPattern
+    // {0: "SKU_number", 1: "quantity", 2: "rebate", 3: "descriptions", 4: "price", -1: "total"}
     invoiceColumnNames.forEach((icn, i) => {
       mappedIndexes[
         props.csvLineItemsData[0].indexOf(props.matchingPattern[icn])
       ] = icn;
     });
+
+    // Pivot Inc. line items with the values from the csv
     const pivotLineItems = props.csvLineItemsData.slice(1).map((item, i) => {
       return item.reduce((acc, value, index) => {
         acc[mappedIndexes[index]] = value;
@@ -27,10 +33,29 @@ function SubmitInvoice(props) {
       }, {});
     });
     return pivotLineItems;
-  };
+  }; // helper buildPivotInvoice END
 
   useEffect(() => {
-    setLineItems(buildPivotInvoice);
+    const addingTotal = buildPivotInvoice().map((lineItem) => {
+      lineItem["total"] =
+        Math.round(
+          (lineItem.quantity * lineItem.price + Number.EPSILON) * 100
+        ) / 100;
+      return lineItem;
+    });
+
+    // totals
+    const totals = {};
+    totals["subtotal"] = addingTotal.reduce((acc, v) => {
+      acc = acc + v.total;
+      return acc;
+    }, 0);
+    totals["tax"] =
+      Math.round((totals.subtotal * 0.1 + Number.EPSILON) * 100) / 100;
+    totals["total"] =
+      Math.round((totals.subtotal + totals.tax + Number.EPSILON) * 100) / 100;
+    setTotals(totals);
+    setLineItems(addingTotal);
   }, [props]);
 
   // Handlers
@@ -66,6 +91,12 @@ function SubmitInvoice(props) {
             </div>
           );
         })}
+      </div>
+
+      <div className="singleLineItem">
+        <div>SUBTOTAL: {totals.subtotal}</div>
+        <div>TAX[10%]: {totals.tax}</div>
+        <div>TOTAL: {totals.total}</div>
       </div>
       <div className="dataToSubmitButtons">
         <button onClick={() => handleSubmit().catch((err) => console.log)}>
