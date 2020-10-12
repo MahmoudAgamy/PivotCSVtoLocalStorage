@@ -98,6 +98,7 @@ function Invoices(props) {
             setMatchingPattern={setMatchingPattern}
             handleCancel={handleCancel}
             csvLineItemsData={csvLineItemsData}
+            setCSVInvoiceData={setCSVInvoiceData}
           />
         );
       }

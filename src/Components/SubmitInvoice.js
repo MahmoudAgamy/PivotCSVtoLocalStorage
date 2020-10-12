@@ -40,6 +40,9 @@ function SubmitInvoice(props) {
       `${loggedInUser}_LineItems`,
       JSON.stringify(lineItems)
     );
+    props.setCSVInvoiceData([]);
+    props.csvLineItemsData([]);
+    return <Redirect to="/" />;
   };
 
   const handleRebuildMatchingPattern = async () => {
@@ -51,13 +54,20 @@ function SubmitInvoice(props) {
 
   return (
     <div className="SubmitInvoice">
-      {console.log("Invvvvvvvv: ", lineItems)}
       <div className="dataToSubmit">
         {lineItems.map((line, i) => {
-          return Object.keys(line).map((key, i) => {
-            return <div>{`${key}: ${line[key]}`}</div>;
-          });
+          return (
+            <div className="singleLineItem" key={i}>
+              Line Item: {i + 1}
+              <hr />
+              {Object.keys(line).map((key, i) => {
+                return <div key={i}>{`${key}: ${line[key]}`}</div>;
+              })}
+            </div>
+          );
         })}
+      </div>
+      <div className="dataToSubmitButtons">
         <button onClick={() => handleSubmit().catch((err) => console.log)}>
           Submit
         </button>
